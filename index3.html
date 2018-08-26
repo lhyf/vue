@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue-指令</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<!-- 指令 -->
+	
+	<div id="root">
+		<!-- v-on 绑定事件,冒号后面的为事件名,等号后为事件处理方法 -->
+		<div v-on:click="handleClick">{{content}}</div>
+		<div @click="handleClick">{{content}}</div>
+	</div>
+	
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",
+			data:{
+				content:"Hello"
+			},
+			methods:{
+				handleClick: function(){
+					this.content = "world"
+				}
+			}
+		});
+	</script>
+</body>
+</html>

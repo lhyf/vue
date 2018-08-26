@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue入门</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<!-- 指令 -->
+	
+	<div id="root">
+		<!-- 显示原始内容 -->
+		<div v-text="content"></div>
+		<!-- 显示html标签转义后的内容 -->
+		<div v-html="content"></div>
+	</div>
+	
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",
+			data:{
+				content:'<h1>Hello</h1>'
+			},
+		});
+	</script>
+</body>
+</html>
