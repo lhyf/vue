@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	
+	<div id="root">
+		<div>
+			<input type="text" v-model="inputValue">
+			<button @click="HandelClick">提交</button>
+			<ol>
+				<li v-for="(item ,index) of list" :key="index">{{item}}</li>
+			</ol>
+		</div>
+		
+	</div>
+
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				inputValue: '',
+				list: []
+			},
+			methods: {
+				HandelClick: function(){
+					this.list.push(this.inputValue);
+					this.inputValue = '';
+				}
+			}
+		});
+	</script>
+</body>
+</html>
