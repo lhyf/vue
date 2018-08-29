@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue-组件拆分</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	
+	<div id="root">
+		<div>
+			<input type="text" v-model="inputValue">
+			<button @click="HandelClick">提交</button>
+			<ul>
+				<item></item>
+				<todo-item v-for="(it,index) of list" :key="index" :content="it">
+					
+				</todo-item>
+			</ul>
+		</div>
+		
+	</div>
+
+	<script>
+		// 每一个组件都是一个Vue的实例
+
+
+		// 全局组件 props 后面定义的 content 用于接受外部传入的参数
+		Vue.component("todo-item",{
+			props: ['content'],
+			template: "<li @click='handel'>{{content}}</li>",
+			methods: {
+				handel: function(){
+					alert('click');
+				}
+			}
+		});
+
+
+		// 局部组件需要注册
+		var TodoItem = {
+			template: "<li>局部组件</li>"
+		};
+
+		new Vue({
+			el: "#root",
+			components: {
+				item: TodoItem
+			},
+			data: {
+				inputValue: '',
+				list: []
+			},
+			methods: {
+				HandelClick: function(){
+					this.list.push(this.inputValue);
+					this.inputValue = '';
+				}
+			}
+		});
+	</script>
+</body>
+</html>
